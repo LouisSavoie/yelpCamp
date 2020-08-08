@@ -1,15 +1,62 @@
 <%- include("../partials/header") -%>
 
-<h1><%= campground.name%></h1>
-<img src="<%= campground.image %>" alt="">
-<p><%= campground.description %></p>
+<!-- LEFT PANEL -->
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-3">
+            <p class="lead">YelpCamp</p>
+            <div class="list-group">
+                <li class="list-group-item">Info 1</li>
+                <li class="list-group-item">Info 2</li>
+                <li class="list-group-item">Info 3</li>
+            </div>
+            <!-- WIP add MAP -->
+        </div>
 
-<% campground.comments.forEach(function(comment){ %>
-    <p>
-        <strong><%= comment.author %></strong> - <%= comment.text %>
-    </p>
-<% }) %>
+        <!-- CAMPGROUND CARD -->
+        <div class="col-md-9">
+            <div class="card">
+                <img class="card-img-top" src="<%= campground.image %>" alt="">
+                <div class="card-body d-flex justify-content-between pb-0">
+                    <h4><a href=""><%= campground.name%></a></h4>
+                    <h4>$9.00/Night</h4>
+                </div>
+                <div class="card-body">
+                    <p><%= campground.description %></p>
+                </div>
+                <div class="card-body d-flex justify-content-between pt-0">
+                    <!-- WIP add rating --> <p class="mb-0">* * * * * Stars</p>
+                    <!-- WIP add # of reviews --> <p class="mb-0">4 Reviews</p>
+                </div>
+            </div>
 
-<p><a class="btn btn-success" href="/campgrounds/<%= campground._id %>/comments/new">Add New Comment</a></p>
+            <!-- COMMENT SECTION -->
+            <div class="card mt-3">
+                <div class="card-body d-flex justify-content-end">
+                    <p class="mb-0"><a class="btn btn-success" href="/campgrounds/<%= campground._id %>/comments/new">Add New Comment</a></p>
+                </div>
+                <hr class="m-0">
+                <div class="card-body">
+                    <% campground.comments.forEach(function(comment){ %>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <!-- WIP add rating -->
+                                        <strong><%= comment.author %></strong>
+                                    </div>
+                                    10 days ago
+                                </div>
+                                <p>
+                                    <%= comment.text %>
+                                </p>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <%- include("../partials/footer") -%>
