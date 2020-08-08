@@ -2,7 +2,10 @@
 const express    = require("express"),
       app        = express(),
       mongoose   = require('mongoose'),
-      Campground = require("./models/campground");
+      Campground = require("./models/campground"),
+      seedDB     = require("./seeds");
+
+seedDB();
 
 // CONNECT MONGOOSE TO MONGODB
 mongoose.connect('mongodb://localhost/yelpcamp', {
