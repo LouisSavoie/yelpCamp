@@ -37,20 +37,20 @@ function seedDB(){
                     console.log(err);
                 } else {
                     console.log("Added a campground.");
+                    Comment.create(
+                        {
+                            text: "This place is great, but I wish it had internet.",
+                            author: "Homer"
+                        }, function(err, comment){
+                            if(err){
+                                console.log(err);
+                            } else {
+                                campground.comments.push(comment);
+                                campground.save();
+                                console.log("Created a new comment.")
+                            }
+                    });
                 }
-                Comment.create(
-                    {
-                        text: "This place is great, but I wish it had internet.",
-                        author: "Homer"
-                    }, function(err, comment){
-                        if(err){
-                            console.log(err);
-                        } else {
-                            campground.comments.push(comment);
-                            campground.save();
-                            console.log("Created a new comment.")
-                        }
-                });
             });
         });
     });
