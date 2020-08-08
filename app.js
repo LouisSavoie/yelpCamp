@@ -6,8 +6,6 @@ const express    = require("express"),
       Comment    = require("./models/comment"),
       seedDB     = require("./seeds");
 
-seedDB();
-
 // CONNECT MONGOOSE TO MONGODB
 mongoose.connect('mongodb://localhost/yelpcamp', {
   useNewUrlParser: true,
@@ -19,6 +17,9 @@ mongoose.connect('mongodb://localhost/yelpcamp', {
 // APP SETUP
 app.use(express.urlencoded({extended: true}));
 app.set("view engine", "ejs");
+app.use(express.static(__dirname + "/public"));
+
+seedDB();
 
 // ===================
 // CAMPGROUNDS ROUTES
