@@ -1,7 +1,10 @@
-const express  = require("express"),
-      app      = express(),
-      mongoose = require('mongoose');
+// REQUIRES
+const express    = require("express"),
+      app        = express(),
+      mongoose   = require('mongoose'),
+      Campground = require("./models/campground");
 
+// CONNECT MONGOOSE TO MONGODB
 mongoose.connect('mongodb://localhost/yelpcamp', {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -9,21 +12,13 @@ mongoose.connect('mongodb://localhost/yelpcamp', {
 .then(() => console.log('Connected to DB!'))
 .catch(error => console.log(error.message));
 
+// APP SETUP
 app.use(express.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 
-// SCHEMA SETUP
-const campgroundSchema = new mongoose.Schema({
-    name: String,
-    image: String,
-    description: String
-});
-
-let Campground = mongoose.model("Campground", campgroundSchema);
-
 // ROUTES
 
-// ROOT ROUTE
+// ROOT
 app.get("/", function(req, res){
     res.render("landing");
 });
