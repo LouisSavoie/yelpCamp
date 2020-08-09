@@ -28,7 +28,7 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 
 // SEED THE DATABASE WITH DUMMY DATA
-seedDB();
+//seedDB();
 
 // PASSPORT CONFIG
 app.use(require("express-session")({
