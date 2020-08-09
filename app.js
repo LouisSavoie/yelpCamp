@@ -1,10 +1,13 @@
 // REQUIRES
-const express    = require("express"),
-      app        = express(),
-      mongoose   = require('mongoose'),
-      Campground = require("./models/campground"),
-      Comment    = require("./models/comment"),
-      seedDB     = require("./seeds");
+const express       = require("express"),
+      app           = express(),
+      mongoose      = require('mongoose'),
+      passport      = require("passport"),
+      LocalStrategy = require("passport-local"),
+      Campground    = require("./models/campground"),
+      Comment       = require("./models/comment"),
+      User          = require("./models/user"),
+      seedDB        = require("./seeds");
 
 // CONNECT MONGOOSE TO MONGODB
 mongoose.connect('mongodb://localhost/yelpcamp', {
