@@ -161,6 +161,19 @@ app.post("/register", function(req, res){
     });
 });
 
+// LOGIN FORM
+app.get("/login", function(req, res){
+    res.render("login");
+});
+
+// POST LOGIN
+app.post("/login", passport.authenticate("local",
+    {
+        successRedirect: "/campgrounds",
+        failureRedirect: "/login"
+    }), function(req, res){
+});
+
 // PORT LISTENING
 let port = process.env.PORT || 3000;
 app.listen(port, function () {
