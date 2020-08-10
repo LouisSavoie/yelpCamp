@@ -19,16 +19,21 @@ router.get("/campgrounds", function(req, res){
 });
 
 // CREATE
-router.post("/campgrounds", function(req, res){
+router.post("/campgrounds", isLoggedIn, function(req, res){
     // get data from form
     let name = req.body.name;
     let image = req.body.image;
     let description = req.body.description;
+    let author = {
+        id: req.user._id,
+        username: req.user.username
+    }
     // add to DB (helpcamp.campgrounds)
     Campground.create({
         name: name,
         image: image,
-        description: description
+        description: description,
+        author: author
     }, function(err, campground) {
         if (err) {
             console.log("Error creating campground from form: " + err);
@@ -41,7 +46,7 @@ router.post("/campgrounds", function(req, res){
 });
 
 // NEW
-router.get("/campgrounds/new", function(req, res){
+router.get("/campgrounds/new", isLoggedIn, function(req, res){
     res.render("campgrounds/new");
 });
 
@@ -57,5 +62,13 @@ router.get("/campgrounds/:id", function(req, res){
         }
     });
 });
+
+// CHECK FOR LOGGED IN
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect("/login");
+};
 
 module.exports = router;
