@@ -26,8 +26,11 @@
                 </div>
                 <div class="card-body d-flex justify-content-between pt-0">
                     <p class="mb-0"><em>Submitted by <%= campground.author.username %>.</em></p>
-                    <!-- WIP add rating --> <p class="mb-0">* * * * * Stars</p>
                     <!-- WIP add # of reviews --> <p class="mb-0">4 Reviews</p>
+                </div>
+                <div class="card-body d-flex justify-content-between pt-0">
+                    <a class="btn btn-warning" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
+                    <!-- WIP add rating --> <p class="mb-0">* * * * * Stars</p>
                 </div>
             </div>
 

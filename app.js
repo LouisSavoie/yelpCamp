@@ -1,13 +1,14 @@
 // REQUIRES
-const express       = require("express"),
-      app           = express(),
-      mongoose      = require('mongoose'),
-      passport      = require("passport"),
-      LocalStrategy = require("passport-local"),
-      Campground    = require("./models/campground"),
-      Comment       = require("./models/comment"),
-      User          = require("./models/user"),
-      seedDB        = require("./seeds");
+const express        = require("express"),
+      app            = express(),
+      mongoose       = require('mongoose'),
+      passport       = require("passport"),
+      LocalStrategy  = require("passport-local"),
+      methodOverride = require("method-override"),
+      Campground     = require("./models/campground"),
+      Comment        = require("./models/comment"),
+      User           = require("./models/user"),
+      seedDB         = require("./seeds");
 
 // REQUIRE ROUTES
 const campgroundRoutes = require("./routes/campgrounds"),
@@ -22,10 +23,13 @@ mongoose.connect('mongodb://localhost/yelpcamp', {
 .then(() => console.log('Connected to DB!'))
 .catch(error => console.log(error.message));
 
+mongoose.set('useFindAndModify', false);
+
 // APP SETUP
 app.use(express.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
+app.use(methodOverride("_method"));
 
 // SEED THE DATABASE WITH DUMMY DATA
 //seedDB();
