@@ -1,0 +1,8 @@
+.custom-link {
+    color: #007bff;
+}
+
+.custom-link:hover {
+    text-decoration: none;
+    color: #0c79ee;
+}

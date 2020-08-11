@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Campground = require("../models/campground");
+const campground = require("../models/campground");
 
 // ===================
 // CAMPGROUNDS ROUTES
@@ -64,18 +65,14 @@ router.get("/campgrounds/:id", function(req, res){
 });
 
 // EDIT
-router.get("/campgrounds/:id/edit", function(req, res){
+router.get("/campgrounds/:id/edit", checkCampgroundOwnership, function(req, res){
     Campground.findById(req.params.id, function(err, foundCampground){
-        if(err){
-            res.redirect("/campgrounds");
-        } else {
-            res.render("campgrounds/edit", {campground: foundCampground});
-        }
+        res.render("campgrounds/edit", {campground: foundCampground});
     });
 });
 
 // UPDATE
-router.put("/campgrounds/:id", function(req, res){
+router.put("/campgrounds/:id", checkCampgroundOwnership, function(req, res){
     // find campground then update it
     Campground.findByIdAndUpdate(req.params.id, req.body.campground, function(err, updatedCampground){
         if(err){
@@ -88,7 +85,7 @@ router.put("/campgrounds/:id", function(req, res){
 });
 
 // DELETE
-router.delete("/campgrounds/:id", function(req, res){
+router.delete("/campgrounds/:id", checkCampgroundOwnership, function(req, res){
     Campground.findByIdAndRemove(req.params.id, function(err){
         if(err) {
             res.redirect("/campgrounds");
@@ -98,12 +95,36 @@ router.delete("/campgrounds/:id", function(req, res){
     });
 });
 
+// ============
+//  MIDDLEWARE
+// ============
+
 // CHECK FOR LOGGED IN
 function isLoggedIn(req, res, next){
     if(req.isAuthenticated()){
         return next();
     }
     res.redirect("/login");
+};
+
+// CHECK IF CAMPGROUND OWNER
+function checkCampgroundOwnership(req, res, next){
+    if(req.isAuthenticated()){
+        Campground.findById(req.params.id, function(err, foundCampground){
+            if(err){
+                res.redirect("back");
+            } else {
+                // does user oown campground
+                if(foundCampground.author.id.equals(req.user._id)){
+                    next();
+                } else {
+                    res.redirect("back");
+                }
+            }
+        });
+    } else {
+        res.redirect("back");
+    }
 };
 
 module.exports = router;
