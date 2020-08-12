@@ -26,6 +26,7 @@ router.post("/campgrounds", middleware.isLoggedIn, function(req, res){
     // get data from form
     let name = req.body.name;
     let image = req.body.image;
+    let price = req.body.price;
     let description = req.body.description;
     let author = {
         id: req.user._id,
@@ -35,6 +36,7 @@ router.post("/campgrounds", middleware.isLoggedIn, function(req, res){
     Campground.create({
         name: name,
         image: image,
+        price: price,
         description: description,
         author: author
     }, function(err, campground) {

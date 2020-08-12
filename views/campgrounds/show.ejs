@@ -18,8 +18,8 @@
             <div class="card">
                 <img class="card-img-top" src="<%= campground.image %>" alt="">
                 <div class="card-body d-flex justify-content-between pb-0">
-                    <h4><a class="custom-link" href=""><%= campground.name%></a></h4>
-                    <h4>$9.00/Night</h4>
+                    <h4><%= campground.name%></h4>
+                    <h4>$<%= campground.price %>/night</h4>
                 </div>
                 <div class="card-body pb-0">
                     <p><%= campground.description %></p>
