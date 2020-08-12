@@ -1,0 +1,80 @@
+<%- include("../partials/header") -%>
+
+<!-- LEFT PANEL -->
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-3">
+            <p class="lead">YelpCamp</p>
+            <div class="list-group">
+                <li class="list-group-item">Info 1</li>
+                <li class="list-group-item">Info 2</li>
+                <li class="list-group-item">Info 3</li>
+            </div>
+            <!-- WIP add MAP -->
+        </div>
+
+        <!-- CAMPGROUND CARD -->
+        <div class="col-md-9">
+            <div class="card">
+                <img class="card-img-top" src="<%= campground.image %>" alt="">
+                <div class="card-body d-flex justify-content-between pb-0">
+                    <h4><%= campground.name%></h4>
+                    <h4>$<%= campground.price %>/night</h4>
+                </div>
+                <div class="card-body pb-0">
+                    <p><%= campground.description %></p>
+                </div>
+                <div class="card-body d-flex justify-content-between pt-0">
+                    <p class="mb-0"><em>Submitted by <%= campground.author.username %>.</em></p>
+                    <!-- WIP add rating --> <p class="align-middle mb-0">* * * * * Stars</p>
+                    <!-- WIP add # of reviews --> <p class="mb-0">4 Reviews</p>
+                </div>
+                <div class="card-body pt-0">
+                    <% if(currentUser && campground.author.id.equals(currentUser._id)){ %>
+                        <div>
+                            <a class="btn btn-sm btn-warning" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
+                            <form class="d-inline" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
+                            <button class="btn btn-sm btn-danger">Delete</button>
+                            </form>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+
+            <!-- COMMENT SECTION -->
+            <div class="card mt-3">
+                <div class="card-body d-flex justify-content-between">
+                    <h4>Comments</h4>
+                    <p class="mb-0"><a class="btn btn-sm btn-success" href="/campgrounds/<%= campground._id %>/comments/new">Add New Comment</a></p>
+                </div>
+                <hr class="m-0">
+                <div class="card-body pb-0">
+                    <% campground.comments.forEach(function(comment){ %>
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <!-- WIP add rating -->
+                                        <strong><%= comment.author.username %></strong>
+                                    </div>
+                                    10 days ago
+                                </div>
+                                <p class="mb-1">
+                                    <%= comment.text %>
+                                </p>
+                                <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                                    <a href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit" class="btn btn-sm btn-warning">Edit</a>
+                                    <form class="d-inline" action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                                        <input class="btn btn-sm btn-danger" type="submit" value="Delete">
+                                    </form>
+                                <% } %>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("../partials/footer") -%>
