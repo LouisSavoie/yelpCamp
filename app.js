@@ -17,7 +17,7 @@ const campgroundRoutes = require("./routes/campgrounds"),
       indexRoutes      = require("./routes/index");
 
 // CONNECT MONGOOSE TO MONGODB
-mongoose.connect('mongodb://localhost/yelpcamp', {
+mongoose.connect(process.env.DATABASEURL, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
