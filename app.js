@@ -34,7 +34,7 @@ app.use(methodOverride("_method"));
 app.use(flash());
 
 // SEED THE DATABASE WITH DUMMY DATA
-//seedDB();
+seedDB();
 
 // PASSPORT CONFIG
 app.use(require("express-session")({
