@@ -80,12 +80,12 @@ h4 {
 }
 
 .custom-link {
-    color: #007bff;
+    color: rgb(40, 167, 69);
 }
 
 .custom-link:hover {
     text-decoration: none;
-    color: #0c79ee;
+    color: black
 }
 
 .card {
