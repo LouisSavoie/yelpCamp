@@ -46,19 +46,24 @@ async function seedDB(){
         }
     ];
 
+    let dateString = new Date().toLocaleDateString();
+
     // Comments Data (I know this is not good practice, it's just for testing.)
     let commentSeeds = [
         {
             text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            author: {id: testbot._id, username: testbot.username}
+            author: {id: testbot._id, username: testbot.username},
+            date : dateString
         },
         {
             text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            author: {id: testbot._id, username: testbot.username}
+            author: {id: testbot._id, username: testbot.username},
+            date : dateString
         },
         {
             text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            author: {id: testbot._id, username: testbot.username}
+            author: {id: testbot._id, username: testbot.username},
+            date : dateString
         }
     ]
 

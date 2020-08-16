@@ -3,8 +3,9 @@
 <div class="container mt-4">
     <div class="row">
 
-        <!-- CAMPGROUND CARD -->
-        <div class="col-12">
+        <div class="col-10">
+
+            <!-- CAMPGROUND CARD -->
             <div class="card">
                 <img class="card-img-top" src="<%= campground.image %>" alt="">
                 <div class="card-body d-flex justify-content-between pb-0">
@@ -47,7 +48,7 @@
                                         <!-- WIP add rating -->
                                         <strong><%= comment.author.username %></strong>
                                     </div>
-                                    10 days ago
+                                    <em><%= comment.date %></em>
                                 </div>
                                 <p class="mb-1">
                                     <%= comment.text %>
@@ -63,7 +64,9 @@
                     <% }) %>
                 </div>
             </div>
+
         </div>
+
     </div>
 </div>
 
