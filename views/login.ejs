@@ -1,11 +1,29 @@
 <%- include("partials/header") -%>
 
-<h1>Login</h1>
+<div class="container mt-5">
+    <div class="row d-block">
 
-<form action="/login" method="POST">
-    <input type="text" name="username" placeholder="username">
-    <input type="password" name="password" placeholder="password">
-    <button>Login</button>
-</form>
+        <h1 style="text-align: center;">Login</h1>
+
+        <div class="col-xl-4 col-lg-5 col-md-7 col-sm-10 mx-auto mt-4">
+
+            <form action="/login" method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="username" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="password" name="password" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block">Login</button>
+                </div>
+            </form>
+
+            <p class="centered">Don't have an account? <a class="custom-link" href="/register"><strong>Sign up!</strong></a></p>
+
+        </div>
+    </div>
+    
+</div>
 
 <%- include("partials/footer") -%>
