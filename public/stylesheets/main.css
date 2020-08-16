@@ -95,3 +95,11 @@ h4 {
 .centered {
     text-align: center;
 }
+
+/* -------------------- */
+/* CAMPGROUND SHOW PAGE */
+/* -------------------- */
+
+#comment-date {
+    font-size: 12px;
+}
