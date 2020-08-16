@@ -1,12 +1,105 @@
+body {
+    background-image: url("../img/bg.png");
+    background-repeat: no-repeat;
+    background-position: center top;
+    color: black;
+}
+
+@media only screen and (max-width: 400px) {
+    body {
+        background-position: -250px -20px;
+        background-size: 260vw auto;
+    }
+}
+
+@media only screen and (min-width: 400px) {
+    body {
+        background-position: -250px -20px;
+        background-size: 215vw auto;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    body {
+        background-position: -210px -10px;
+        background-size: 175vw auto;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    body {
+        background-position: -200px 0px;
+        background-size: 150vw auto;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    body {
+        background-position: -275px 0px;
+        background-size: 150vw auto;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    body {
+        background-position: -200px 0px;
+        background-size: 120vw auto;
+    }
+}
+
+@media only screen and (min-width: 1600px) {
+    body {
+        background-position: center top;
+        background-size: initial;
+    }
+}
+
+.navbar-brand, .navbar-light .nav-item .nav-link {
+    color: black;
+}
+
+.navbar-light .nav-item .nav-link:hover {
+    color: rgb(40, 167, 69);
+}
+
+.navbar-light .navbar-brand:hover {
+    color: white;
+}
+
+.navbar-nav {
+    text-align: right;
+}
+
+.jumbotron {
+    background: none;
+    text-align: center;
+}
+
 h4 {
     margin: 0px;
 }
 
 .custom-link {
-    color: #007bff;
+    color: rgb(40, 167, 69);
 }
 
 .custom-link:hover {
     text-decoration: none;
-    color: #0c79ee;
+    color: black
+}
+
+.card {
+    border: 1px solid black;
+}
+
+.centered {
+    text-align: center;
+}
+
+/* -------------------- */
+/* CAMPGROUND SHOW PAGE */
+/* -------------------- */
+
+#comment-date {
+    font-size: 12px;
 }

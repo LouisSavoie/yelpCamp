@@ -38,9 +38,10 @@ router.post("/campgrounds/:id/comments", middleware.isLoggedIn, function(req, re
                 req.flash("error", "Something went wrong.");
                 console.log(err);
             } else {
-                // add username and id to comment
+                // add username, id, date to comment
                 comment.author.id = req.user._id;
                 comment.author.username = req.user.username;
+                comment.date = Date.now().toDateString();
                 comment.save();
                 // connect new comment to campground
                 campground.comments.push(comment);
