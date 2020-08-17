@@ -10,6 +10,10 @@ body {
         background-position: -250px -20px;
         background-size: 260vw auto;
     }
+
+    #new-comment-button {
+        margin-top: 15px;
+    }
 }
 
 @media only screen and (min-width: 400px) {
@@ -94,6 +98,22 @@ h4 {
 
 .centered {
     text-align: center;
+}
+
+.back-button {
+    margin-bottom: 20px;
+    color: black;
+    background: rgb(221, 221, 221);
+}
+
+.back-button:hover {
+    background: rgb(185, 185, 185);
+}
+
+.index-thumbnail {
+    height: 15em;
+    width: 100%;
+    object-fit: cover;
 }
 
 /* -------------------- */
