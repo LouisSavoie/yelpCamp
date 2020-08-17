@@ -10,6 +10,10 @@ body {
         background-position: -250px -20px;
         background-size: 260vw auto;
     }
+
+    #new-comment-button {
+        margin-top: 15px;
+    }
 }
 
 @media only screen and (min-width: 400px) {
