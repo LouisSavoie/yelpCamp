@@ -96,6 +96,16 @@ h4 {
     text-align: center;
 }
 
+.back-button {
+    margin-bottom: 20px;
+    color: black;
+    background: rgb(221, 221, 221);
+}
+
+.back-button:hover {
+    background: rgb(185, 185, 185);
+}
+
 /* -------------------- */
 /* CAMPGROUND SHOW PAGE */
 /* -------------------- */
